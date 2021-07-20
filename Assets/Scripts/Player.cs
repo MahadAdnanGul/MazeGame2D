@@ -14,17 +14,7 @@ public class Player : Character
 
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.gameObject.CompareTag("Gem"))
-        {
-            gems++;
-            gemText.text = "Gems: " + gems;
-            Destroy(collision.gameObject);
-            Invoke("CheckWin",0.5f);
-        }
 
-    }
     private void Awake()
     {
         playerAnim = GetComponent<Animator>();
@@ -111,5 +101,12 @@ public class Player : Character
             Debug.Log(FindObjectOfType<Enemy>());
             Debug.Log(GameObject.FindGameObjectWithTag("Gem"));
         }
+    }
+    public void CollectGem()
+    {
+        gems++;
+        gemText.text = "Gems: " + gems;
+        //Destroy(collision.gameObject);
+        Invoke("CheckWin", 0.5f);
     }
 }

@@ -24,4 +24,14 @@ public class UIManager : MonoBehaviour
             time.text = "Time: " + elapsedTime;
         }
     }
+    public void PauseButton()
+    {
+        Time.timeScale = 0;
+    }
+    public void Play()
+    {
+        Time.timeScale = 1;
+    }
+    
+
 }
