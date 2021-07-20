@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Obsticle
   - Gem
+  - Enemy
   layers:
   - Default
   - TransparentFX

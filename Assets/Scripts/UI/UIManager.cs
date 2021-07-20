@@ -3,35 +3,45 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
-public class UIManager : MonoBehaviour
+namespace Maze
 {
-    [SerializeField] private TextMeshProUGUI time;
-    private int elapsedTime;
-    // Start is called before the first frame update
-    void Start()
+    public class UIManager : MonoBehaviour
     {
-        elapsedTime = 0;
-        StartCoroutine(Timer());
-    }
-
-    IEnumerator Timer()
-    {
-        while(true)
+        [SerializeField] private TextMeshProUGUI time;
+        private int elapsedTime;
+        // Start is called before the first frame update
+        void Start()
         {
-            yield return new WaitForSeconds(1);
-            elapsedTime++;
-            time.text = "Time: " + elapsedTime;
+            elapsedTime = 0;
+            StartCoroutine(Timer());
         }
-    }
-    public void PauseButton()
-    {
-        Time.timeScale = 0;
-    }
-    public void Play()
-    {
-        Time.timeScale = 1;
-    }
-    
+        public void RestartGame()
+        {
+            Time.timeScale = 1;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            
+        }
+        IEnumerator Timer()
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(1);
+                elapsedTime++;
+                time.text = "Time: " + elapsedTime;
+            }
+        }
+        public void PauseButton()
+        {
+            Time.timeScale = 0;
+        }
+        public void Play()
+        {
+            Time.timeScale = 1;
+        }
 
+
+    }
 }
+
